@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo List</title>
+</head>
+<body>
+        <button>Add Task</button>
+        <div class="todo_body">
+            {% block content %}
+            <h1 id="title1">Tasks in "List 1"</h1>
+                <div>
+                    <table id="table1">
+                        <tr>
+                            <td><h3>Task</h3></td>
+                            <td><h3>Created</h3></td>
+                            <td><h3>Due On</h3></td>
+                            <td><h3>Owner</h3></td>
+                            <td><h3>Mark</h3></td>
+                        </tr>
+                        {% for todo in tasks %}
+                            {% if not todo.mark %}
+                                <tr>
+                                    <td><h5 id="task_name">{{ todo.name }}</h5></td>
+                                    <td>{{ todo.created }}</td>
+                                    <td>{{ todo.due_on }}</td>
+                                    <td>{{ todo.owner}}</td>
+                                    <td><button type="button" id="button1">Done</button></td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                    </table>
+                </div>
+            {% endblock %}
+        </div>
+        <button>View tasks</button>
+        <button>Delete</button>
+</body>
+</html>
